@@ -1,0 +1,10 @@
+<div class="container my-4">
+    <h4>Today you get to do:</h4>
+    <div *ngIf="this.todos.length==0; else elseBlock">You have completed all the tasks!</div>
+    <ng-template #elseBlock>
+        <div *ngFor="let todo of todos">
+            <app-todo-item [todo]="todo" (todoCheckbox)="toggleTodo($event)" (todoDelete)="deleteTodo($event)"  ></app-todo-item>
+        </div>
+    </ng-template>
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+</div>
